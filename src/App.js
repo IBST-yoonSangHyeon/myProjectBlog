@@ -29,6 +29,16 @@ function App() {
     따봉변경(뉴따봉);
   }
 
+  function 저장 (){
+    let 뉴글제목 = [...글제목];
+    let 뉴따봉 = [...따봉];
+    let 뉴입력값 = 입력값;
+    뉴글제목.push(뉴입력값);
+    글제목변경(뉴글제목);
+    뉴따봉.push(0);
+    따봉변경(뉴따봉);
+  }
+
   let posts = '강남 고기 맛집';
 
   // 자주 사용됨
@@ -46,9 +56,8 @@ function App() {
       </div>
       { 
         글제목.map((글, 인덱스, 어레이이) => { 
-          console.log('인덱스', 인덱스);
           return (
-          <div className="list">
+          <div className="list" key={ 인덱스 }>
             <h3 onClick={ () => { 누른제목변경(인덱스) } } >{ 글 } <span onClick={ () => { 따봉증가(인덱스) } }>👍</span> { 따봉[인덱스] } </h3>
             <p>2월 17일 발행</p>
             <hr/>
@@ -57,8 +66,18 @@ function App() {
         })
       }
 
-      <input onChange={ (e) => { 입력값변경(e.target.value); } } />
-      { 입력값 }
+      <div className="publish">
+        <input onChange={  (e) => { 입력값변경(e.target.value) } }/>
+        <button onClick={ () => {
+          let arrayCopy = [...글제목];
+          let arrayCopy2 = [...따봉];
+          arrayCopy.unshift(입력값);
+          arrayCopy2.unshift(0);
+          글제목변경(arrayCopy);
+          따봉변경(arrayCopy2);
+         } }>저장</button>
+      </div>
+
       <button onClick={ () => {modal변경(!modal)} }>열고 닫기</button>
       
       { 
