@@ -11,6 +11,8 @@ function App() {
   let [누른제목, 누른제목변경] = useState(0);
   let [modal, modal변경] = useState(true); // 모달창 on/off 스위치 (모달에서 많이 사용함)
 
+  let [입력값, 입력값변경] = useState('');
+
   // 자주 사용됨
   // function 반복된UI () {
   //   let 어레이 = [];
@@ -55,10 +57,8 @@ function App() {
         })
       }
 
-      {/* <button onClick={ () => { 누른제목변경(0) } } >버튼1</button>
-      <button onClick={ () => { 누른제목변경(1) } }>버튼2</button>
-      <button onClick={ () => { 누른제목변경(2) } }>버튼3</button> */}
-
+      <input onChange={ (e) => { 입력값변경(e.target.value); } } />
+      { 입력값 }
       <button onClick={ () => {modal변경(!modal)} }>열고 닫기</button>
       
       { 
