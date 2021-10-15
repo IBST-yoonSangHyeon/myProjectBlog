@@ -8,6 +8,7 @@ function App() {
 
   let [글제목, 글제목변경] =  useState(['남자 코트 추천', '강남 우동 맛집', '윤상현 짱짱짱']); // ES6 destructuring 문법
   let [따봉, 따봉변경] = useState(0);
+  let [modal, modal변경] = useState(false); // 모달창 on/off 스위치 (모달에서 많이 사용함)
   let posts = '강남 고기 맛집';
 
   // function 제목바꾸기() {
@@ -16,6 +17,10 @@ function App() {
   //   newArray[0] = '여자코트 추천';
   //   글제목변경(newArray);
   // }
+
+  function 모달스위치 () {
+    modal변경(!modal);
+  }
 
   return (
     <div className="App">
@@ -33,11 +38,19 @@ function App() {
         <hr/>
       </div>
       <div className="list">
-        <h3>{ 글제목[2] }</h3>
+        <h3 onClick={ () => { modal변경(!modal); } }>{ 글제목[2] }</h3>
         <p>2월 17일 발행</p>
         <hr/>
       </div>
-      <Modal />
+
+      <button onClick={ 모달스위치 }>버튼</button>
+
+      { 
+        modal === true 
+        ? <Modal />
+        : null
+      }
+
     </div>
   );
 }
@@ -45,7 +58,7 @@ function App() {
 function Modal() {
   return (
     <div className="modal">
-      <h2> { 글제목[0] }</h2>
+      <h2>제목</h2>
       <p>날짜</p>
       <p>상세내용</p>
     </div>
