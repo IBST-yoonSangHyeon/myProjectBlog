@@ -1,3 +1,7 @@
+# 애플코딩 Part 1 : 블로그 제작 & 기초 문법 브랜치
+## 애플코딩으로 배움
+기본 문법을 배움. 함수형인 hook을 배움
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
